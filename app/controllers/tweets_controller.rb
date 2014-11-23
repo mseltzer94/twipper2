@@ -20,11 +20,15 @@ class TweetsController < ApplicationController
 		render 'new'
 	end
 
-	private
+	
 
 	def index
 		@tweets =Tweet.all.reject {|tweet| tweet.user == current_user}
+		@relationship = Relationship.new
 	end
+
+
+	private
 
 	def tweet_params
 		params.require(:tweet).permit(:tweet)
